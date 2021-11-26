@@ -1,0 +1,7 @@
+openclassdut_accueil:
+    path: /accueil
+    controller: App\Controller\OpenclassdutController::index
+
+openclassdut_entreprises:
+    path: /entreprises
+    controller: App\Controller\OpenclassdutController::entreprises
