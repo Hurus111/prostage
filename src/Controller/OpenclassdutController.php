@@ -20,4 +20,14 @@ class OpenclassdutController extends AbstractController
     {
         return $this->render('openclassdut/entreprises.html.twig', []);
     }
+
+    public function formations(): Response
+    {
+        return $this->render('openclassdut/formations.html.twig', []);
+    }
+
+    public function stages($id): Response
+    {
+        return $this->render('openclassdut/stages.html.twig', ['id' => $id]);
+    }
 }

@@ -2,18 +2,20 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
-
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+        <title>{% block title %}Openclass DUT{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block slider %}
+        {% endblock %}
+        {% block menu %}
+        {% endblock %}
+        {% block contenu %}
+        {% endblock %}
+        {% block footer %
+        }{% endblock %}
+        
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>

@@ -1,7 +1,15 @@
 openclassdut_accueil:
-    path: /accueil
+    path: /
     controller: App\Controller\OpenclassdutController::index
 
 openclassdut_entreprises:
     path: /entreprises
     controller: App\Controller\OpenclassdutController::entreprises
+
+openclassdut_formations:
+    path: /formations
+    controller: App\Controller\OpenclassdutController::formations
+
+openclassdut_stages:
+    path: /stages/{id}
+    controller: App\Controller\OpenclassdutController::stages
