@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Openclass DUT{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
+            <link href="{{asset('/js/bootstrap.min.js')}}" rel="stylesheet">
+        {% endblock %}
     </head>
     <body>
         {% block slider %}
         {% endblock %}
         {% block menu %}
         {% endblock %}
-        {% block contenu %}
+        {% block body %}
         {% endblock %}
-        {% block footer %
-        }{% endblock %}
+        {% block footer %}
+        {% endblock %}
         
         {% block javascripts %}
         {% endblock %}

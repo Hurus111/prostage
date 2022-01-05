@@ -1,6 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                ZONE 1
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                ZONE 2
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                ZONE 3
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                ZONE 4
+            </div>
+        </div>
+        
+    </div>
     <h1>Bienvenue sur la page d'accueil ! </h1>
 
     <p>Voici la liste des ressources disponibles :</p>    
@@ -15,5 +33,7 @@
             <a href="{{path('openclassdut_stages',{id:1})}}">Stages</a>
         </li>
     </ul>
+
+    
 
 {% endblock %}
