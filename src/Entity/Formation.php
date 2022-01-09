@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FormationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,16 @@ class Formation
      * @ORM\Column(type="string", length=300)
      */
     private $nomLong;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Stage::class, mappedBy="formation")
+     */
+    private $stageFormationLink;
+
+    public function __construct()
+    {
+        $this->stageFormationLink = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +81,33 @@ class Formation
     public function setNomLong(string $nomLong): self
     {
         $this->nomLong = $nomLong;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Stage[]
+     */
+    public function getEntreprise(): Collection
+    {
+        return $this->entreprise;
+    }
+
+    public function addEntreprise(Stage $entreprise): self
+    {
+        if (!$this->entreprise->contains($entreprise)) {
+            $this->entreprise[] = $entreprise;
+            $entreprise->addFormation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEntreprise(Stage $entreprise): self
+    {
+        if ($this->entreprise->removeElement($entreprise)) {
+            $entreprise->removeFormation($this);
+        }
 
         return $this;
     }

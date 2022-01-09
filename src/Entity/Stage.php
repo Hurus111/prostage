@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,11 +25,6 @@ class Stage
     private $code;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $length;
-
-    /**
      * @ORM\Column(type="string", length=300)
      */
     private $titre;
@@ -41,6 +38,22 @@ class Stage
      * @ORM\Column(type="string", length=100)
      */
     private $email;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Formation::class, inversedBy="entreprise")
+     */
+    private $formation;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Entreprise::class, inversedBy="stage")
+     */
+    private $entreprise;
+
+    public function __construct()
+    {
+        $this->formation = new ArrayCollection();
+        $this->entreprise = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +116,54 @@ class Stage
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Formation[]
+     */
+    public function getFormation(): Collection
+    {
+        return $this->formation;
+    }
+
+    public function addFormation(Formation $formation): self
+    {
+        if (!$this->formation->contains($formation)) {
+            $this->formation[] = $formation;
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formation $formation): self
+    {
+        $this->formation->removeElement($formation);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Entreprise[]
+     */
+    public function getEntreprise(): Collection
+    {
+        return $this->entreprise;
+    }
+
+    public function addEntreprise(Entreprise $entreprise): self
+    {
+        if (!$this->entreprise->contains($entreprise)) {
+            $this->entreprise[] = $entreprise;
+        }
+
+        return $this;
+    }
+
+    public function removeEntreprise(Entreprise $entreprise): self
+    {
+        $this->entreprise->removeElement($entreprise);
 
         return $this;
     }
