@@ -5,14 +5,23 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Stage;
 
 class OpenclassdutController extends AbstractController
 {
     
     public function index(): Response
     {
+        // repository stage
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        // ressources bd
+        $ressourcesStage = $repositoryStage->findAll();
+
+        // envoyer ressources
         return $this->render('openclassdut/index.html.twig', [
-            'controller_name' => 'OpenclassdutController',
+            'ressourcesStage'=>$ressourcesStage
+            //,'controller_name' => 'OpenclassdutController'
         ]);
     }
 

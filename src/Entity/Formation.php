@@ -88,25 +88,25 @@ class Formation
     /**
      * @return Collection|Stage[]
      */
-    public function getEntreprise(): Collection
+    public function getStage(): Collection
     {
-        return $this->entreprise;
+        return $this->stageFormationLink;
     }
 
-    public function addEntreprise(Stage $entreprise): self
+    public function addStage(Stage $stage): self
     {
-        if (!$this->entreprise->contains($entreprise)) {
-            $this->entreprise[] = $entreprise;
-            $entreprise->addFormation($this);
+        if (!$this->stageFormationLink->contains($stage)) {
+            $this->stageFormationLink[] = $stage;
+            $stage->addFormation($this);
         }
 
         return $this;
     }
 
-    public function removeEntreprise(Stage $entreprise): self
+    public function removeStage(Stage $stage): self
     {
-        if ($this->entreprise->removeElement($entreprise)) {
-            $entreprise->removeFormation($this);
+        if ($this->stageFormationLink->removeElement($stage)) {
+            $stage->removeFormation($this);
         }
 
         return $this;

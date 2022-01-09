@@ -124,13 +124,13 @@ class Entreprise
      */
     public function getStage(): Collection
     {
-        return $this->stage;
+        return $this->stageEntrepriseLink;
     }
 
     public function addStage(Stage $stage): self
     {
-        if (!$this->stage->contains($stage)) {
-            $this->stage[] = $stage;
+        if (!$this->stageEntrepriseLink->contains($stage)) {
+            $this->stageEntrepriseLink[] = $stage;
             $stage->addEntreprise($this);
         }
 
@@ -139,7 +139,7 @@ class Entreprise
 
     public function removeStage(Stage $stage): self
     {
-        if ($this->stage->removeElement($stage)) {
+        if ($this->stageEntrepriseLink->removeElement($stage)) {
             $stage->removeEntreprise($this);
         }
 

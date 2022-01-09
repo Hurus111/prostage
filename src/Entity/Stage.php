@@ -40,7 +40,7 @@ class Stage
     private $email;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Formation::class, inversedBy="entreprise")
+     * @ORM\ManyToMany(targetEntity=Formation::class, inversedBy="stage")
      */
     private $formation;
 
@@ -68,18 +68,6 @@ class Stage
     public function setCode(int $code): self
     {
         $this->code = $code;
-
-        return $this;
-    }
-
-    public function getLength(): ?int
-    {
-        return $this->length;
-    }
-
-    public function setLength(int $length): self
-    {
-        $this->length = $length;
 
         return $this;
     }
