@@ -1,0 +1,23 @@
+<div class="col-md-3">
+            <div class="card bg-default">
+                <img class="card-img-top" src="{{asset('/hugo.jpg')}}" alt="Img card">
+ 				<h5 class="card-header">
+					Hugo Rivas
+				</h5>
+				<div class="card-body">
+					<p class="card-text">
+						A la recherche d’un stage en entreprise pour ma deuxième année en DUT Informatique (Semestre 4).
+					</p>
+                    <p class="card-text">
+                        Passionné par l’informatique, et motivé à travailler en groupe, j’aime prendre des initiatives au sein des projets ainsi que m’adapter aux différents problèmes que l’on peut rencontrer dans ceux-ci.
+                    </p>
+                    <p class="card-text">
+						+33 07 05 62 48 13
+					</p>
+                    <p class="card-text">		
+                        <a href="mailto:hrgeslin@iutbayonne.univ-pau.fr" target="_blank" class="btn btn-primary">Email Professionnel</a>
+                        <a href="mailto:hugorivasgeslin@gmail.com" target="_blank" class="btn btn-primary">Email Personnel</a>
+					</p>
+				</div>
+			</div>
+		</div>

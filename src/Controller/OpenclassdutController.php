@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Stage;
+use App\Entity\Formation;
+use App\Entity\Entreprise;
 
 class OpenclassdutController extends AbstractController
 {
@@ -21,7 +23,6 @@ class OpenclassdutController extends AbstractController
         // envoyer ressources
         return $this->render('openclassdut/index.html.twig', [
             'ressourcesStage'=>$ressourcesStage
-            //,'controller_name' => 'OpenclassdutController'
         ]);
     }
 
@@ -37,6 +38,12 @@ class OpenclassdutController extends AbstractController
 
     public function stages($id): Response
     {
-        return $this->render('openclassdut/stages.html.twig', ['id' => $id]);
+        // repository stage
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        // ressources bd
+        $ressourceStage = $repositoryStage->find($id);
+
+        return $this->render('openclassdut/stages.html.twig', ['ressourceStage'=>$ressourceStage]);
     }
 }
