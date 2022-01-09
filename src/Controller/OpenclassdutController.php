@@ -46,4 +46,16 @@ class OpenclassdutController extends AbstractController
 
         return $this->render('openclassdut/stages.html.twig', ['ressourceStage'=>$ressourceStage]);
     }
+
+    public function stagesListe(): Response
+    {
+        // repository stage
+        $repositoryStageListe = $this->getDoctrine()->getRepository(Stage::class);
+
+        // ressources bd
+        $ressourceStageListe = $repositoryStageListe->findAll();
+
+        // envoyer ressources
+        return $this->render('openclassdut/stagesListe.html.twig', ['ressourceStageListe'=>$ressourceStageListe]);
+    }
 }

@@ -13,3 +13,7 @@ openclassdut_formations:
 openclassdut_stages:
     path: /stages/{id}
     controller: App\Controller\OpenclassdutController::stages
+    
+openclassdut_stagesListe:
+    path: /stagesListe
+    controller: App\Controller\OpenclassdutController::stagesListe

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="card text-black bg-light mb-3"><h5 class="card-header">
+			Stages disponibles actuellement
+		</h5></div>
+	</div>
+	<div class="list-group">
+		{% for ressourceCourante in ressourceStageListe %}
+		<div class="list-group-item">
+            <div class="card text-black bg-light mb-3">
+                <h5 class="card-header">
+					{{ressourceCourante.titre}}
+				</h5>
+				<div class="card-body">
+					<p class="card-text">
+						{{ressourceCourante.mission}}
+					</p>
+					<p class="btn-group">
+						<a href="{{path('openclassdut_stages',{id:ressourceCourante.id})}}" target="_blank" class="btn btn-outline-dark">Visiter</a>
+						<a href="mailto:{{ressourceCourante.email}}" target="_blank" class="btn btn-outline-dark">Email</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+
+	</div>
+
+{% endblock %}

@@ -13,7 +13,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = \Faker\Factory::create('fr_FR');
-      
+
         $formations=array(
                         array("LP Num", "Licence Professionnelle Metiers du Numerique"),
                         array("DUT Info", "DUT Informatique"),
@@ -62,6 +62,7 @@ class AppFixtures extends Fixture
             ${"formation".$i}->setNomCourt($formations[$randForm][0]);
             ${"formation".$i}->setNomLong($formations[$randForm][1]);
 
+            //${"stage".$i}->addFormation(${"formation".$i});
             ${"formation".$i}->addStage(${"stage".$i});
 
             $manager->persist(${"formation".$i});
@@ -78,6 +79,7 @@ class AppFixtures extends Fixture
             ${"enteprise".$i}->setActivite($faker->realText($maxNbChars = 100, $indexSize = 2));
             ${"enteprise".$i}->setSiteweb("stage-".$randEnt.".fr");
 
+            //${"stage".$i}->addEntreprise(${"enteprise".$i});
             ${"enteprise".$i}->addStage(${"stage".$i});
 
             $manager->persist(${"enteprise".$i});
