@@ -21,3 +21,142 @@
 				</div>
 			</div>
 		</div>
+
+
+
+	/**
+     * @ORM\ManyToMany(targetEntity=Stage::class, mappedBy="entreprise")
+     */
+    private $stageEntrepriseLink;
+
+    public function __construct()
+    {
+        $this->stageEntrepriseLink = new ArrayCollection();
+    }
+
+	/**
+     * @ORM\ManyToMany(targetEntity=Stage::class, mappedBy="formation")
+     */
+    private $stageFormationLink;
+
+    public function __construct()
+    {
+        $this->stageFormationLink = new ArrayCollection();
+    }
+
+	
+    /**
+     * @return Collection|Stage[]
+     */
+    public function getStage(): Collection
+    {
+        return $this->stageFormationLink;
+    }
+
+    public function addStage(Stage $stage): self
+    {
+        if (!$this->stageFormationLink->contains($stage)) {
+            $this->stageFormationLink[] = $stage;
+            $stage->addFormation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStage(Stage $stage): self
+    {
+        if ($this->stageFormationLink->removeElement($stage)) {
+            $stage->removeFormation($this);
+        }
+
+        return $this;
+    }
+
+	/**
+     * @return Collection|Stage[]
+     */
+    public function getStage(): Collection
+    {
+        return $this->stageEntrepriseLink;
+    }
+
+    public function addStage(Stage $stage): self
+    {
+        if (!$this->stageEntrepriseLink->contains($stage)) {
+            $this->stageEntrepriseLink[] = $stage;
+            $stage->addEntreprise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStage(Stage $stage): self
+    {
+        if ($this->stageEntrepriseLink->removeElement($stage)) {
+            $stage->removeEntreprise($this);
+        }
+
+        return $this;
+    }
+
+
+
+
+
+
+
+
+	//////////////////
+	/**
+     * @return Collection|Formation[]
+     */
+    public function getFormation(): Collection
+    {
+        return $this->formation;
+    }
+
+    public function addFormation(Formation $formation): self
+    {
+        if (!$this->formation->contains($formation)) {
+            $this->formation[] = $formation;
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formation $formation): self
+    {
+        $this->formation->removeElement($formation);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Entreprise[]
+     */
+    public function getEntreprise(): Collection
+    {
+        return $this->entreprise;
+    }
+
+    public function addEntreprise(Entreprise $entreprise): self
+    {
+        if (!$this->entreprise->contains($entreprise)) {
+            $this->entreprise[] = $entreprise;
+        }
+
+        return $this;
+    }
+
+    public function removeEntreprise(Entreprise $entreprise): self
+    {
+        $this->entreprise->removeElement($entreprise);
+
+        return $this;
+    }
+	////////////////
+	public function __construct()
+    {
+        $this->formation = new ArrayCollection();
+        $this->entreprise = new ArrayCollection();
+    }

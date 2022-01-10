@@ -44,16 +44,7 @@ class Entreprise
      */
     private $siteweb;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Stage::class, mappedBy="entreprise")
-     */
-    private $stageEntrepriseLink;
-
-    public function __construct()
-    {
-        $this->stageEntrepriseLink = new ArrayCollection();
-    }
-
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -115,33 +106,6 @@ class Entreprise
     public function setSiteweb(string $siteweb): self
     {
         $this->siteweb = $siteweb;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Stage[]
-     */
-    public function getStage(): Collection
-    {
-        return $this->stageEntrepriseLink;
-    }
-
-    public function addStage(Stage $stage): self
-    {
-        if (!$this->stageEntrepriseLink->contains($stage)) {
-            $this->stageEntrepriseLink[] = $stage;
-            $stage->addEntreprise($this);
-        }
-
-        return $this;
-    }
-
-    public function removeStage(Stage $stage): self
-    {
-        if ($this->stageEntrepriseLink->removeElement($stage)) {
-            $stage->removeEntreprise($this);
-        }
 
         return $this;
     }

@@ -40,20 +40,15 @@ class Stage
     private $email;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Formation::class, inversedBy="stage")
+     * @ORM\ManyToOne(targetEntity=Formation::class)
      */
     private $formation;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Entreprise::class, inversedBy="stage")
+     * @ORM\ManyToOne(targetEntity=Entreprise::class)
      */
     private $entreprise;
 
-    public function __construct()
-    {
-        $this->formation = new ArrayCollection();
-        $this->entreprise = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -108,50 +103,31 @@ class Stage
         return $this;
     }
 
-    /**
-     * @return Collection|Formation[]
-     */
-    public function getFormation(): Collection
+    public function getFormation(): ?Formation
     {
         return $this->formation;
     }
 
     public function addFormation(Formation $formation): self
     {
-        if (!$this->formation->contains($formation)) {
-            $this->formation[] = $formation;
-        }
+        
+            $this->formation = $formation;
+        
 
         return $this;
     }
 
-    public function removeFormation(Formation $formation): self
-    {
-        $this->formation->removeElement($formation);
 
-        return $this;
-    }
-
-    /**
-     * @return Collection|Entreprise[]
-     */
-    public function getEntreprise(): Collection
+    public function getEntreprise(): ?Entreprise
     {
         return $this->entreprise;
     }
 
-    public function addEntreprise(Entreprise $entreprise): self
+    public function setEntreprise(Entreprise $entreprise): self
     {
-        if (!$this->entreprise->contains($entreprise)) {
-            $this->entreprise[] = $entreprise;
-        }
-
-        return $this;
-    }
-
-    public function removeEntreprise(Entreprise $entreprise): self
-    {
-        $this->entreprise->removeElement($entreprise);
+        
+            $this->entreprise = $entreprise;
+        
 
         return $this;
     }

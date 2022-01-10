@@ -12,81 +12,85 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $faker = \Faker\Factory::create('fr_FR');
-
-        $formations=array(
-                        array("LP Num", "Licence Professionnelle Metiers du Numerique"),
-                        array("DUT Info", "DUT Informatique"),
-                        array("LP PA", "Licence Professionnelle Programmation Avancee")
-                );
-        
-        $TABMAX = 5;
-        $titre=array("Developpeur Web",
-                    "Services Reseaux", 
-                    "JavaScript", 
-                    "Programmation Objet", 
-                    "Symfony", 
-                    "Gestion de Projet"
-                );
-        $nomEntrep=array("Apple",
-                        "Facebook", 
-                        "Discord", 
-                        "Google", 
-                        "CDiscount", 
-                        "Samsung"
-                );
-
-        for($i=1; $i<=20; $i++){
-
-            // ===============
-            // STAGES
-            // ===============
-
-            ${"stage".$i} = new Stage();
-
-            ${"stage".$i}->setCode($i);
-            ${"stage".$i}->setTitre($titre[$faker->numberBetween($min = 0, $max = $TABMAX)]);
-            ${"stage".$i}->setMission($faker->realText($maxNbChars = 300, $indexSize = 2));
-            ${"stage".$i}->setEmail($faker->companyEmail);
-
-            $manager->persist(${"stage".$i});
+            $faker = \Faker\Factory::create('fr_FR');
 
             // ===============
             // FORMATIONS
             // ===============
-            $randForm = $faker->numberBetween($min = 0, $max = 2);
+            $listeFormations=array(
+                array("LP Num", "Licence Professionnelle Metiers du Numerique"),
+                array("DUT Info", "DUT Informatique"),
+                array("LP PA", "Licence Professionnelle Programmation Avancee")
+            );
 
-            ${"formation".$i} = new Formation();
+            for($i=0; $i<=2; $i++){
+                $formation = new Formation();
             
-            ${"formation".$i}->setCode($i);
-            ${"formation".$i}->setNomCourt($formations[$randForm][0]);
-            ${"formation".$i}->setNomLong($formations[$randForm][1]);
+                $formation->setCode($i);
+                $formation->setNomCourt($listeFormations[$i][0]);
+                $formation->setNomLong($listeFormations[$i][1]);
 
-            //${"stage".$i}->addFormation(${"formation".$i});
-            ${"formation".$i}->addStage(${"stage".$i});
+                // Création d'un tableau d'entreprises
+                $tableauDesFormations[] = $formation;
 
-            $manager->persist(${"formation".$i});
-            
+                $manager->persist($formation);
+            }
+
             // ===============
             // ENTREPRISES
             // ===============
-            $randEnt = $nomEntrep[$faker->numberBetween($min = 0, $max = $TABMAX)];
-            ${"enteprise".$i} = new Entreprise();
+            $listeEntreprises=array(
+                "Apple","Facebook", "Discord", 
+                "Google", "CDiscount", "Samsung"
+            );
+            
+            for($i=0; $i<20; $i++){
+                $randEnt = $listeEntreprises[$faker->numberBetween($min = 0, $max = 5)];
+                $entreprise = new Entreprise();
 
-            ${"enteprise".$i}->setCode($i);
-            ${"enteprise".$i}->setNom($randEnt);
-            ${"enteprise".$i}->setAdresse($faker->address);
-            ${"enteprise".$i}->setActivite($faker->realText($maxNbChars = 100, $indexSize = 2));
-            ${"enteprise".$i}->setSiteweb("stage-".$randEnt.".fr");
+                $entreprise->setCode($i);
+                $entreprise->setNom($randEnt);
+                $entreprise->setAdresse($faker->address);
+                $entreprise->setActivite($faker->realText($maxNbChars = 50, $indexSize = 2));
+                $entreprise->setSiteweb("stage-".$randEnt.".fr");
 
-            //${"stage".$i}->addEntreprise(${"enteprise".$i});
-            ${"enteprise".$i}->addStage(${"stage".$i});
+                
+                $tableauDesEntreprises[] = $entreprise;
+                $manager->persist($entreprise);
+                
+            }
 
-            $manager->persist(${"enteprise".$i});
-        }
+            // ===============
+            // STAGES
+            // ===============
+            $titre=array(
+                "Developpeur Web","Services Reseaux", 
+                "JavaScript", "Programmation Objet", 
+                "Symfony", "Gestion de Projet"
+            );
 
-        $manager->flush();
+            for($i=0; $i<20; $i++){
 
+                $stage = new Stage();
+    
+                $stage->setCode($i);
+                $stage->setTitre($titre[$faker->numberBetween($min = 0, $max = 5)]);
+                $stage->setMission($faker->realText($maxNbChars = 300, $indexSize = 2));
+                $stage->setEmail($faker->companyEmail);
+    
+                $entrepriseVersStage = $faker->numberBetween($min = 0, $max = 19);
+                $stage->setEntreprise($tableauDesEntreprises[$entrepriseVersStage]);
+
+                $formationVersStage = $faker->numberBetween($min = 0, $max = 2);
+                $stage->addFormation($tableauDesFormations[$formationVersStage]);
+
+                $manager->persist($stage);
+
+            }
+
+            $manager->flush();
+
+        
         // ===============
         // FORMATIONS
         // ===============

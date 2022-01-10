@@ -11,7 +11,10 @@ use App\Entity\Entreprise;
 
 class OpenclassdutController extends AbstractController
 {
-    
+    // ========================================================================= //
+    // ===============================  index   ================================ //
+    // ========================================================================= //
+
     public function index(): Response
     {
         // repository stage
@@ -26,26 +29,51 @@ class OpenclassdutController extends AbstractController
         ]);
     }
 
+    // ========================================================================= //
+    // ============================  entreprises   ============================= //
+    // ========================================================================= //
+
     public function entreprises(): Response
     {
-        return $this->render('openclassdut/entreprises.html.twig', []);
+        // repository stage
+        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+
+        // ressources bd
+        $ressourcesEntreprise = $repositoryEntreprise->findAll();
+
+        // envoyer ressources
+        return $this->render('openclassdut/entreprises.html.twig', ['ressourcesEntreprise'=>$ressourcesEntreprise]);
     }
+
+    // ========================================================================= //
+    // ============================   formations    ============================ //
+    // ========================================================================= //
 
     public function formations(): Response
     {
         return $this->render('openclassdut/formations.html.twig', []);
     }
 
+    // ========================================================================= //
+    // ==============================   stages    ============================== //
+    // ========================================================================= //
+
     public function stages($id): Response
     {
         // repository stage
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
-
+        //$repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+        
         // ressources bd
         $ressourceStage = $repositoryStage->find($id);
+        //$ressourceStage = $repositoryStage->find($id);
 
-        return $this->render('openclassdut/stages.html.twig', ['ressourceStage'=>$ressourceStage]);
+        return $this->render('openclassdut/stages.html.twig', ['ressourceStage'=>$ressourceStage,]);
     }
+
+    // ========================================================================= //
+    // ============================== stagesListe ============================== //
+    // ========================================================================= //
 
     public function stagesListe(): Response
     {

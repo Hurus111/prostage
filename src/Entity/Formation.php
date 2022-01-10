@@ -34,16 +34,6 @@ class Formation
      */
     private $nomLong;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Stage::class, mappedBy="formation")
-     */
-    private $stageFormationLink;
-
-    public function __construct()
-    {
-        $this->stageFormationLink = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -81,33 +71,6 @@ class Formation
     public function setNomLong(string $nomLong): self
     {
         $this->nomLong = $nomLong;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Stage[]
-     */
-    public function getStage(): Collection
-    {
-        return $this->stageFormationLink;
-    }
-
-    public function addStage(Stage $stage): self
-    {
-        if (!$this->stageFormationLink->contains($stage)) {
-            $this->stageFormationLink[] = $stage;
-            $stage->addFormation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeStage(Stage $stage): self
-    {
-        if ($this->stageFormationLink->removeElement($stage)) {
-            $stage->removeFormation($this);
-        }
 
         return $this;
     }

@@ -4,17 +4,17 @@
 {% block title %}Stages{% endblock %}
 
 {% block body %}
-
     <div class="row">
 		<div class="card text-black bg-light mb-3">
             <h5 class="card-header">{{ressourceStage.titre}}</h5>
             <ul class="list-group">
                 <li class="list-group-item"><strong>Descriptif : </strong>{{ressourceStage.mission}}</li>
-                <li class="list-group-item"><strong>Formation : </strong>{{ressourceStage.formation.getNomCourt}}</li>
+                <li class="list-group-item"><strong>Formation : </strong></li>
                 <li class="list-group-item"><strong>Entreprise : </strong></li>
                 <li class="list-group-item"><strong>Contact : </strong>{{ressourceStage.email}}</li>
 	        </ul>
         </div>
     </div>
+    
 
 {% endblock %}
