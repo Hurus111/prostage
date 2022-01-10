@@ -4,7 +4,29 @@
 
 {% block body %}
 
-<div class="example-wrapper">
-    <h1>Cette page affichera la liste des formations de l'IUT </h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="card text-black bg-light mb-3"><h5 class="card-header">
+			Liste des Formations
+		</h5></div>
+	</div>
+	<div class="list-group">
+		{% for ressourceCourante in ressourcesFormation %}
+		<div class="list-group-item">
+            <div class="card text-black bg-light mb-3">
+                <h5 class="card-header">
+					{{ressourceCourante.nomCourt}}
+				</h5>
+				<div class="card-body">
+					<p class="card-text">
+						<strong>Nom Long : </strong>{{ressourceCourante.nomLong}}
+					</p>
+				</div>
+                
+			</div>
+	    </div>
+		{% endfor %}
+
+	</div>
 </div>
 {% endblock %}

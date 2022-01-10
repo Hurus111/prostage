@@ -43,7 +43,6 @@ class Entreprise
      * @ORM\Column(type="string", length=300)
      */
     private $siteweb;
-
    
     public function getId(): ?int
     {

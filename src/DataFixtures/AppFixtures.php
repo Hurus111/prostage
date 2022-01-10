@@ -79,57 +79,15 @@ class AppFixtures extends Fixture
                 $stage->setEmail($faker->companyEmail);
     
                 $entrepriseVersStage = $faker->numberBetween($min = 0, $max = 19);
-                $stage->setEntreprise($tableauDesEntreprises[$entrepriseVersStage]);
+                //$stage->setEntreprise($tableauDesEntreprises[$entrepriseVersStage]);
 
                 $formationVersStage = $faker->numberBetween($min = 0, $max = 2);
-                $stage->addFormation($tableauDesFormations[$formationVersStage]);
+                //$stage->setFormation($tableauDesFormations[$formationVersStage]);
 
                 $manager->persist($stage);
 
             }
 
             $manager->flush();
-
-        
-        // ===============
-        // FORMATIONS
-        // ===============
-        /*$i=0;
-        $formations=array(
-                        array("LP Num", "Licence Professionnelle Metiers du Numerique"),
-                        array("DUT Info", "DUT Informatique"),
-                        array("LP PA", "Licence Professionnelle Programmation Avancee")
-                );
-
-        foreach($formations as $court => $long){
-            $i++;
-            ${"formation".$i} = new Formation();
-            
-            ${"formation".$i}->setCode($i);
-            ${"formation".$i}->setNomCourt($court);
-            ${"formation".$i}->setNomLong($long);
-            $manager->persist(${"formation".$i});
-
-            $manager->flush();
-        }*/
-    
-        // ===============
-        // ENTREPRISES
-        // ===============
-
-        
-        /*
-        for($i=1; $i<=20; $i++){
-            ${"enteprise".$i} = new Entreprise();
-
-            ${"enteprise".$i}->setCode($i);
-            ${"enteprise".$i}->setNom($faker->name);
-            ${"enteprise".$i}->setAdresse($faker->address);
-            ${"enteprise".$i}->setActivite($faker->realText($maxNbChars = 100, $indexSize = 2));
-            ${"enteprise".$i}->setSiteweb($faker->domainName);
-            $manager->persist(${"enteprise".$i});
-
-            $manager->flush();
-        }*/
     }
 }
