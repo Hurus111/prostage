@@ -79,10 +79,10 @@ class AppFixtures extends Fixture
                 $stage->setEmail($faker->companyEmail);
     
                 $entrepriseVersStage = $faker->numberBetween($min = 0, $max = 19);
-                //$stage->setEntreprise($tableauDesEntreprises[$entrepriseVersStage]);
+                $stage->setEntreprise($tableauDesEntreprises[$entrepriseVersStage]);
 
                 $formationVersStage = $faker->numberBetween($min = 0, $max = 2);
-                //$stage->setFormation($tableauDesFormations[$formationVersStage]);
+                $stage->setFormation($tableauDesFormations[$formationVersStage]);
 
                 $manager->persist($stage);
 

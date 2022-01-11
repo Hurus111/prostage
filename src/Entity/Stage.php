@@ -39,6 +39,16 @@ class Stage
      */
     private $email;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Formation::class, inversedBy="stages")
+     */
+    private $formation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="stages")
+     */
+    private $entreprise;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +98,30 @@ class Stage
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getFormation(): ?Formation
+    {
+        return $this->formation;
+    }
+
+    public function setFormation(?Formation $formation): self
+    {
+        $this->formation = $formation;
+
+        return $this;
+    }
+
+    public function getEntreprise(): ?Entreprise
+    {
+        return $this->entreprise;
+    }
+
+    public function setEntreprise(?Entreprise $entreprise): self
+    {
+        $this->entreprise = $entreprise;
 
         return $this;
     }

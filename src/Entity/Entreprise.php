@@ -43,6 +43,16 @@ class Entreprise
      * @ORM\Column(type="string", length=300)
      */
     private $siteweb;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Stage::class, mappedBy="entreprise")
+     */
+    private $stages;
+
+    public function __construct()
+    {
+        $this->stages = new ArrayCollection();
+    }
    
     public function getId(): ?int
     {
@@ -105,6 +115,36 @@ class Entreprise
     public function setSiteweb(string $siteweb): self
     {
         $this->siteweb = $siteweb;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Stage[]
+     */
+    public function getStages(): Collection
+    {
+        return $this->stages;
+    }
+
+    public function addStage(Stage $stage): self
+    {
+        if (!$this->stages->contains($stage)) {
+            $this->stages[] = $stage;
+            $stage->setEntreprise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStage(Stage $stage): self
+    {
+        if ($this->stages->removeElement($stage)) {
+            // set the owning side to null (unless already changed)
+            if ($stage->getEntreprise() === $this) {
+                $stage->setEntreprise(null);
+            }
+        }
 
         return $this;
     }

@@ -69,13 +69,14 @@ class OpenclassdutController extends AbstractController
     {
         // repository stage
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
-        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+        //$repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
         
         // ressources bd
         $ressourceStage = $repositoryStage->find($id);
-        $ressourceEntreprise = $repositoryEntreprise->find($id);
+        //$ressourceEntreprise = $repositoryEntreprise->find($id);
 
-        return $this->render('openclassdut/stages.html.twig', ['ressourceStage'=>$ressourceStage,'ressourceEntreprise'=>$ressourceEntreprise]);
+        return $this->render('openclassdut/stages.html.twig', ['ressourceStage'=>$ressourceStage //,'ressourceEntreprise'=>$ressourceEntreprise
+    ]);
     }
 
     // ========================================================================= //
