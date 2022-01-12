@@ -94,4 +94,46 @@ class OpenclassdutController extends AbstractController
         // envoyer ressources
         return $this->render('openclassdut/stagesListe.html.twig', ['ressourceStageListe'=>$ressourceStageListe]);
     }
+
+    // ========================================================================= //
+    // ============================== stagesEntreprise ========================= //
+    // ========================================================================= //
+
+    public function stagesEntreprise($id): Response
+    {
+        // repository stage
+        $repositoryStagesEntreprise = $this->getDoctrine()->getRepository(Stage::class);
+        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+
+        // ressources bd
+        $ressourceStagesEntreprise = $repositoryStagesEntreprise->findBy(['entreprise'=>$id]);
+        $ressourceEntreprise = $repositoryEntreprise->find($id);
+
+        // envoyer ressources
+        return $this->render('openclassdut/stagesEntreprise.html.twig', [
+                            'ressourceStagesEntreprise'=>$ressourceStagesEntreprise,
+                            'ressourceEntreprise'=>$ressourceEntreprise
+                        ]);
+    }
+
+    // ========================================================================= //
+    // ============================= stagesFiltres ============================= //
+    // ========================================================================= //
+
+    public function stagesFiltres($id): Response
+    {
+        // repository stage
+        $repositoryStagesEntreprise = $this->getDoctrine()->getRepository(Stage::class);
+        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+
+        // ressources bd
+        $ressourceStagesEntreprise = $repositoryStagesEntreprise->findBy(['entreprise'=>$id]);
+        $ressourceEntreprise = $repositoryEntreprise->find($id);
+
+        // envoyer ressources
+        return $this->render('openclassdut/stagesEntreprise.html.twig', [
+                            'ressourceStagesEntreprise'=>$ressourceStagesEntreprise,
+                            'ressourceEntreprise'=>$ressourceEntreprise
+                        ]);
+    }
 }

@@ -17,3 +17,11 @@ openclassdut_stages:
 openclassdut_stagesListe:
     path: /stagesListe
     controller: App\Controller\OpenclassdutController::stagesListe
+
+openclassdut_stagesEntreprise:
+    path: /stagesEntreprise/{id}
+    controller: App\Controller\OpenclassdutController::stagesEntreprise
+
+openclassdut_stagesFiltres:
+    path: /stagesFiltres/{type}/{id}
+    controller: App\Controller\OpenclassdutController::stagesFiltres
