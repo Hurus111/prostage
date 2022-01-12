@@ -120,18 +120,21 @@ class OpenclassdutController extends AbstractController
     // ============================= stagesFiltres ============================= //
     // ========================================================================= //
 
-    public function stagesFiltres($id): Response
+    public function stagesFiltres($type,$id): Response
     {
         // repository stage
-        $repositoryStagesEntreprise = $this->getDoctrine()->getRepository(Stage::class);
-        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
-
+        $repositoryStagesFiltres = $this->getDoctrine()->getRepository(Stage::class);
+        if($type=="formation"){
+            $repositoryType = $this->getDoctrine()->getRepository(Formation::class);
+        }elseif($type=="entreprise"){
+            $repositoryType = $this->getDoctrine()->getRepository(Entreprise::class);
+        }
         // ressources bd
-        $ressourceStagesEntreprise = $repositoryStagesEntreprise->findBy(['entreprise'=>$id]);
-        $ressourceEntreprise = $repositoryEntreprise->find($id);
+        $ressourceStagesEntreprise = $repositoryStagesEntreprise->findBy([$type=>$id]);
+        $ressourceFiltres = $repositoryType->find($id);
 
         // envoyer ressources
-        return $this->render('openclassdut/stagesEntreprise.html.twig', [
+        return $this->render('openclassdut/stagesFiltres.html.twig', [
                             'ressourceStagesEntreprise'=>$ressourceStagesEntreprise,
                             'ressourceEntreprise'=>$ressourceEntreprise
                         ]);
