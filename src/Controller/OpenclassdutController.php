@@ -130,13 +130,13 @@ class OpenclassdutController extends AbstractController
             $repositoryType = $this->getDoctrine()->getRepository(Entreprise::class);
         }
         // ressources bd
-        $ressourceStagesEntreprise = $repositoryStagesEntreprise->findBy([$type=>$id]);
+        $ressourceStagesFiltres = $repositoryStagesFiltres->findBy([$type=>$id]);
         $ressourceFiltres = $repositoryType->find($id);
 
         // envoyer ressources
         return $this->render('openclassdut/stagesFiltres.html.twig', [
-                            'ressourceStagesEntreprise'=>$ressourceStagesEntreprise,
-                            'ressourceEntreprise'=>$ressourceEntreprise
+                            'ressourceStagesFiltres'=>$ressourceStagesFiltres,
+                            'ressourceFiltres'=>$ressourceFiltres
                         ]);
     }
 }
