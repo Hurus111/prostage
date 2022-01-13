@@ -1,39 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Formations{% endblock %}
-
 {% block body %}
 
-<div class="container-fluid">
+    <div class="container-fluid">
 	<div class="row">
-		<h1>Toutes les Formations</h1>
+		<h1>Tous les stages de {{ressourceFormation.nomCourt}}</h1>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue erat quam, eget sagittis leo porta et. Maecenas egestas posuere dolor, sed tincidunt nunc semper vel. Vivamus in nibh nisl. Curabitur dignissim metus mauris, non porttitor leo semper quis. Nunc molestie nisl at hendrerit dapibus. Vestibulum non sodales massa. Phasellus efficitur, metus at sodales malesuada, arcu dolor euismod arcu, sed rutrum tellus leo id nunc. Donec tristique risus porta odio tempus, eget tempus nulla euismod. Praesent sodales velit arcu, et pharetra sem congue sed. Vivamus auctor gravida purus. Suspendisse pellentesque massa id lorem condimentum auctor. Cras facilisis pharetra est vitae eleifend. Morbi posuere id libero at ullamcorper. Pellentesque congue dolor iaculis eros mattis, quis sodales turpis sollicitudin.</p>
 	</div>
 	<div class="row">
 		<div class="card text-black bg-light mb-3"><h5 class="card-header">
-			Liste des Formations
+			Liste des Stages
 		</h5></div>
 	</div>
 	<div class="list-group">
-		{% for ressourceCourante in ressourcesFormation %}
+		{% for ressourceCourante in ressourceStagesFormation %}
 		<div class="list-group-item">
             <div class="card text-black bg-light mb-3">
                 <h5 class="card-header">
-					{{ressourceCourante.nomCourt}}
+					{{ressourceCourante.titre}}
 				</h5>
 				<div class="card-body">
 					<p class="card-text">
-						<strong>Nom Long : </strong>{{ressourceCourante.nomLong}}
+						{{ressourceCourante.mission}}
 					</p>
-					<p class="btn">
-						<a href="{{path('openclassdut_stagesFormation',{id:ressourceCourante.id})}}" target="_blank" class="btn btn-outline-dark">Filtrer</a>
+					<p class="btn-group">
+						<a href="{{path('openclassdut_stages',{id:ressourceCourante.id})}}" target="_blank" class="btn btn-outline-dark">Visiter</a>
+						<a href="mailto:{{ressourceCourante.email}}" target="_blank" class="btn btn-outline-dark">Email</a>
 					</p>
 				</div>
-                
 			</div>
-	    </div>
+		</div>
 		{% endfor %}
+		
 
 	</div>
-</div>
+
 {% endblock %}

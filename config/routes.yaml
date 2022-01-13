@@ -19,9 +19,9 @@ openclassdut_stagesListe:
     controller: App\Controller\OpenclassdutController::stagesListe
 
 openclassdut_stagesEntreprise:
-    path: /stagesEntreprise/{id}
+    path: /stagesFiltres/entreprise/{id}
     controller: App\Controller\OpenclassdutController::stagesEntreprise
 
-openclassdut_stagesFiltres:
-    path: /stagesFiltres/{type}/{id}
-    controller: App\Controller\OpenclassdutController::stagesFiltres
+openclassdut_stagesFormation:
+    path: /stagesFiltres/formation/{id}
+    controller: App\Controller\OpenclassdutController::stagesFormation

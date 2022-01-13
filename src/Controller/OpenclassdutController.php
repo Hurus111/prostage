@@ -19,13 +19,16 @@ class OpenclassdutController extends AbstractController
     {
         // repository stage
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
 
         // ressources bd
-        $ressourcesStage = $repositoryStage->findAll();
+        $ressourcesStage = $repositoryStage->findBy(array(),array('id'=>'DESC'),4,0);
+        $ressourcesEntreprise = $repositoryEntreprise->findBy(array(),array('id'=>'DESC'),4,0);
 
         // envoyer ressources
         return $this->render('openclassdut/index.html.twig', [
-            'ressourcesStage'=>$ressourcesStage
+            'ressourcesStage'=>$ressourcesStage,
+            'ressourcesEntreprise'=>$ressourcesEntreprise
         ]);
     }
 
@@ -117,26 +120,23 @@ class OpenclassdutController extends AbstractController
     }
 
     // ========================================================================= //
-    // ============================= stagesFiltres ============================= //
+    // ============================== stagesFormation ========================= //
     // ========================================================================= //
 
-    public function stagesFiltres($type,$id): Response
+    public function stagesFormation($id): Response
     {
         // repository stage
-        $repositoryStagesFiltres = $this->getDoctrine()->getRepository(Stage::class);
-        if($type=="formation"){
-            $repositoryType = $this->getDoctrine()->getRepository(Formation::class);
-        }elseif($type=="entreprise"){
-            $repositoryType = $this->getDoctrine()->getRepository(Entreprise::class);
-        }
+        $repositoryStagesFormation = $this->getDoctrine()->getRepository(Stage::class);
+        $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
+
         // ressources bd
-        $ressourceStagesFiltres = $repositoryStagesFiltres->findBy([$type=>$id]);
-        $ressourceFiltres = $repositoryType->find($id);
+        $ressourceStagesFormation = $repositoryStagesFormation->findBy(['formation'=>$id]);
+        $ressourceFormation = $repositoryFormation->find($id);
 
         // envoyer ressources
-        return $this->render('openclassdut/stagesFiltres.html.twig', [
-                            'ressourceStagesFiltres'=>$ressourceStagesFiltres,
-                            'ressourceFiltres'=>$ressourceFiltres
+        return $this->render('openclassdut/stagesFormation.html.twig', [
+                            'ressourceStagesFormation'=>$ressourceStagesFormation,
+                            'ressourceFormation'=>$ressourceFormation
                         ]);
     }
 }
