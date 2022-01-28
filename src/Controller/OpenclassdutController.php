@@ -139,4 +139,28 @@ class OpenclassdutController extends AbstractController
                             'ressourceFormation'=>$ressourceFormation
                         ]);
     }
+
+
+
+    // =====================================================
+
+    public function parEntreprise($id){
+        $repository = $this->getDoctrine()->getRepository(Stage::class);
+
+        $stage = $repository->stagesParEntreprise($id);
+
+        return $this->render('tps_s4/parEntreprise.html.twig',
+            ['stage'=>$stage]
+        );
+    }
+
+    public function parFormation($nom){
+        $repository = $this->getDoctrine()->getRepository(Stage::class);
+
+        $stage = $repository->stagesParFormation($nom);
+
+        return $this->render('tps_s4/parFormation.html.twig',
+            ['stage'=>$stage]
+        );
+    }
 }

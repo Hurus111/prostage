@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Par Entreprise / QueryBuilder{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+	
+	<div class="row">
+		<div class="card text-black bg-light mb-3"><h5 class="card-header">
+			Par Entreprise / QueryBuilder
+		</h5></div>
+	</div>
+	<div class="list-group">
+		{% for ressourceCourante in stage %}
+		
+                <h5 class="card-text">
+					{{ressourceCourante.titre}} - {{ressourceCourante.entreprise.nom}}
+				</h5><br>
+	    
+		{% endfor %}
+
+	</div>
+</div>
+{% endblock %}

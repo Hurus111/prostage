@@ -25,3 +25,11 @@ openclassdut_stagesEntreprise:
 openclassdut_stagesFormation:
     path: /stagesFiltres/formation/{id}
     controller: App\Controller\OpenclassdutController::stagesFormation
+
+tps_s4_parEntreprise:
+    path: /parEntreprise/{id}
+    controller: App\Controller\OpenclassdutController::parEntreprise
+
+tps_s4_parFormation:
+    path: /parFormation/{nom}
+    controller: App\Controller\OpenclassdutController::parFormation    
