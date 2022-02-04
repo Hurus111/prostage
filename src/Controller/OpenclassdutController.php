@@ -9,7 +9,7 @@ use App\Entity\Stage;
 use App\Entity\Formation;
 use App\Entity\Entreprise;
 
-class OpenclassdutController extends AbstractController
+class prostagesController extends AbstractController
 {
     // ========================================================================= //
     // ===============================  index   ================================ //
@@ -26,7 +26,7 @@ class OpenclassdutController extends AbstractController
         $ressourcesEntreprise = $repositoryEntreprise->findBy(array(),array('id'=>'DESC'),4,0);
 
         // envoyer ressources
-        return $this->render('openclassdut/index.html.twig', [
+        return $this->render('prostages/index.html.twig', [
             'ressourcesStage'=>$ressourcesStage,
             'ressourcesEntreprise'=>$ressourcesEntreprise
         ]);
@@ -45,7 +45,7 @@ class OpenclassdutController extends AbstractController
         $ressourcesEntreprise = $repositoryEntreprise->findAll();
 
         // envoyer ressources
-        return $this->render('openclassdut/entreprises.html.twig', ['ressourcesEntreprise'=>$ressourcesEntreprise]);
+        return $this->render('prostages/entreprises.html.twig', ['ressourcesEntreprise'=>$ressourcesEntreprise]);
     }
 
     // ========================================================================= //
@@ -61,7 +61,7 @@ class OpenclassdutController extends AbstractController
         $ressourcesFormation = $repositoryFormation->findAll();
 
         // envoyer ressources
-        return $this->render('openclassdut/formations.html.twig', ['ressourcesFormation'=>$ressourcesFormation]);
+        return $this->render('prostages/formations.html.twig', ['ressourcesFormation'=>$ressourcesFormation]);
     }
 
     // ========================================================================= //
@@ -72,13 +72,11 @@ class OpenclassdutController extends AbstractController
     {
         // repository stage
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
-        //$repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
         
         // ressources bd
         $ressourceStage = $repositoryStage->find($id);
-        //$ressourceEntreprise = $repositoryEntreprise->find($id);
 
-        return $this->render('openclassdut/stages.html.twig', ['ressourceStage'=>$ressourceStage //,'ressourceEntreprise'=>$ressourceEntreprise
+        return $this->render('prostages/stages.html.twig', ['ressourceStage'=>$ressourceStage //,'ressourceEntreprise'=>$ressourceEntreprise
     ]);
     }
 
@@ -95,7 +93,7 @@ class OpenclassdutController extends AbstractController
         $ressourceStageListe = $repositoryStageListe->findAll();
 
         // envoyer ressources
-        return $this->render('openclassdut/stagesListe.html.twig', ['ressourceStageListe'=>$ressourceStageListe]);
+        return $this->render('prostages/stagesListe.html.twig', ['ressourceStageListe'=>$ressourceStageListe]);
     }
 
     // ========================================================================= //
@@ -113,7 +111,7 @@ class OpenclassdutController extends AbstractController
         $ressourceEntreprise = $repositoryEntreprise->find($id);
 
         // envoyer ressources
-        return $this->render('openclassdut/stagesEntreprise.html.twig', [
+        return $this->render('prostages/stagesEntreprise.html.twig', [
                             'ressourceStagesEntreprise'=>$ressourceStagesEntreprise,
                             'ressourceEntreprise'=>$ressourceEntreprise
                         ]);
@@ -134,7 +132,7 @@ class OpenclassdutController extends AbstractController
         $ressourceFormation = $repositoryFormation->find($id);
 
         // envoyer ressources
-        return $this->render('openclassdut/stagesFormation.html.twig', [
+        return $this->render('prostages/stagesFormation.html.twig', [
                             'ressourceStagesFormation'=>$ressourceStagesFormation,
                             'ressourceFormation'=>$ressourceFormation
                         ]);
@@ -163,4 +161,18 @@ class OpenclassdutController extends AbstractController
             ['stage'=>$stage]
         );
     }
+
+    // =========== ajouterEntreprise ===========
+
+    public function ajouterEntreprise(){
+        $entreprise = new Entreprise();
+
+        $ressourceFormulaire = $this->createFormBuilder($entreprise)
+                            ->add('nom')
+                            ->add('activite')
+                            ->add('adresse')
+                            ->add('siteweb')
+                            ->getForm();
+    }
+    
 }

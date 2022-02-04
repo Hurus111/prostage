@@ -1,35 +1,35 @@
-openclassdut_accueil:
+prostages_accueil:
     path: /
-    controller: App\Controller\OpenclassdutController::index
+    controller: App\Controller\prostagesController::index
 
-openclassdut_entreprises:
+prostages_entreprises:
     path: /entreprises
-    controller: App\Controller\OpenclassdutController::entreprises
+    controller: App\Controller\prostagesController::entreprises
 
-openclassdut_formations:
+prostages_formations:
     path: /formations
-    controller: App\Controller\OpenclassdutController::formations
+    controller: App\Controller\prostagesController::formations
 
-openclassdut_stages:
+prostages_stages:
     path: /stages/{id}
-    controller: App\Controller\OpenclassdutController::stages
+    controller: App\Controller\prostagesController::stages
     
-openclassdut_stagesListe:
+prostages_stagesListe:
     path: /stagesListe
-    controller: App\Controller\OpenclassdutController::stagesListe
+    controller: App\Controller\prostagesController::stagesListe
 
-openclassdut_stagesEntreprise:
+prostages_stagesEntreprise:
     path: /stagesFiltres/entreprise/{id}
-    controller: App\Controller\OpenclassdutController::stagesEntreprise
+    controller: App\Controller\prostagesController::stagesEntreprise
 
-openclassdut_stagesFormation:
+prostages_stagesFormation:
     path: /stagesFiltres/formation/{id}
-    controller: App\Controller\OpenclassdutController::stagesFormation
+    controller: App\Controller\prostagesController::stagesFormation
 
 tps_s4_parEntreprise:
     path: /parEntreprise/{id}
-    controller: App\Controller\OpenclassdutController::parEntreprise
+    controller: App\Controller\prostagesController::parEntreprise
 
 tps_s4_parFormation:
     path: /parFormation/{nom}
-    controller: App\Controller\OpenclassdutController::parFormation    
+    controller: App\Controller\prostagesController::parFormation    

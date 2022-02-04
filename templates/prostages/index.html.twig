@@ -9,13 +9,13 @@
 	</div>
 	<div class="row">
 				<div class="col-md-4 text-center mb-3">
-						<a href="{{path('openclassdut_stagesListe')}}" target="_blank" class="btn btn-outline-dark btn-lg center">Voir les Stages</a>
+						<a href="{{path('prostages_stagesListe')}}" target="_blank" class="btn btn-outline-dark btn-lg center">Voir les Stages</a>
 				</div>
 				<div class="col-md-4 text-center">
-						<a href="{{path('openclassdut_entreprises')}}" target="_blank" class="btn btn-outline-dark btn-lg center">Voir les Entreprises</a>
+						<a href="{{path('prostages_entreprises')}}" target="_blank" class="btn btn-outline-dark btn-lg center">Voir les Entreprises</a>
 				</div>
 				<div class="col-md-4 text-center">
-						<a href="{{path('openclassdut_formations')}}" target="_blank" class="btn btn-outline-dark btn-lg center">Voir les Formations</a>
+						<a href="{{path('prostages_formations')}}" target="_blank" class="btn btn-outline-dark btn-lg center">Voir les Formations</a>
 				</div>
 	</div>
 
@@ -37,7 +37,7 @@
 						{{ressourceCourante.mission}}
 					</p>
 					<p class="btn-group">
-						<a href="{{path('openclassdut_stages',{id:ressourceCourante.id})}}" target="_blank" class="btn btn-outline-dark">Visiter</a>
+						<a href="{{path('prostages_stages',{id:ressourceCourante.id})}}" target="_blank" class="btn btn-outline-dark">Visiter</a>
 						<a href="mailto:{{ressourceCourante.email}}" target="_blank" class="btn btn-outline-dark">Email</a>
 					</p>
 				</div>
