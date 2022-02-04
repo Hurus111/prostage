@@ -33,3 +33,7 @@ tps_s4_parEntreprise:
 tps_s4_parFormation:
     path: /parFormation/{nom}
     controller: App\Controller\ProstagesController::parFormation    
+
+prostages_ajouterEntreprise:
+    path: /ajouter/entreprise
+    controller: App\Controller\ProstagesController::ajouterEntreprise  
