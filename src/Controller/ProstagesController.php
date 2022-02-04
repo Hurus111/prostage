@@ -9,7 +9,7 @@ use App\Entity\Stage;
 use App\Entity\Formation;
 use App\Entity\Entreprise;
 
-class prostagesController extends AbstractController
+class ProstagesController extends AbstractController
 {
     // ========================================================================= //
     // ===============================  index   ================================ //

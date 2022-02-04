@@ -1,35 +1,35 @@
 prostages_accueil:
     path: /
-    controller: App\Controller\prostagesController::index
+    controller: App\Controller\ProstagesController::index
 
 prostages_entreprises:
     path: /entreprises
-    controller: App\Controller\prostagesController::entreprises
+    controller: App\Controller\ProstagesController::entreprises
 
 prostages_formations:
     path: /formations
-    controller: App\Controller\prostagesController::formations
+    controller: App\Controller\ProstagesController::formations
 
 prostages_stages:
     path: /stages/{id}
-    controller: App\Controller\prostagesController::stages
+    controller: App\Controller\ProstagesController::stages
     
 prostages_stagesListe:
     path: /stagesListe
-    controller: App\Controller\prostagesController::stagesListe
+    controller: App\Controller\ProstagesController::stagesListe
 
 prostages_stagesEntreprise:
     path: /stagesFiltres/entreprise/{id}
-    controller: App\Controller\prostagesController::stagesEntreprise
+    controller: App\Controller\ProstagesController::stagesEntreprise
 
 prostages_stagesFormation:
     path: /stagesFiltres/formation/{id}
-    controller: App\Controller\prostagesController::stagesFormation
+    controller: App\Controller\ProstagesController::stagesFormation
 
 tps_s4_parEntreprise:
     path: /parEntreprise/{id}
-    controller: App\Controller\prostagesController::parEntreprise
+    controller: App\Controller\ProstagesController::parEntreprise
 
 tps_s4_parFormation:
     path: /parFormation/{nom}
-    controller: App\Controller\prostagesController::parFormation    
+    controller: App\Controller\ProstagesController::parFormation    
