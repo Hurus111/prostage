@@ -172,7 +172,8 @@ class ProstagesController extends AbstractController
                             ->add('activite')
                             ->add('adresse')
                             ->add('siteweb')
-                            ->getForm();
+                            ->getForm()
+                            ->createView();
 
         return $this->render('prostages/ajouterEntreprise.html.twig',
             ['ressourceFormulaire'=>$ressourceFormulaire]

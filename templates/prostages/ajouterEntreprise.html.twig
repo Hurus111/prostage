@@ -1,11 +1,27 @@
-{{ form_start(ressourceFormulaire) }}
+{% extends 'base.html.twig' %}
 
-{{ form_row(ressourceFormulaire.nom) }}
+{% block title %}Ajouter une Entreprise{% endblock %}
 
-{{ form_row(ressourceFormulaire.activite) }}
+{% block body %}
 
-{{ form_row(ressourceFormulaire.adresse) }}
+    {{ form_start(ressourceFormulaire) }}
+    <div class="col-md text-center">
+    <form>
+        <div class="form-group">
+            <div class="text-black mb-3">{{ form_label(ressourceFormulaire.nom) }} : {{ form_widget(ressourceFormulaire.nom) }}</div>
+        </div>
+        <div class="form-group">
+            <div class="text-blackt mb-3">{{ form_label(ressourceFormulaire.activite) }} : {{ form_widget(ressourceFormulaire.activite) }}</div>
+        </div>
+        <div class="form-group">
+            <div class="text-black mb-3">{{ form_label(ressourceFormulaire.adresse) }} : {{ form_widget(ressourceFormulaire.adresse) }}</div>
+        </div>
+        <div class="form-group">
+            <div class="text-black mb-3">{{ form_label(ressourceFormulaire.siteweb) }} : {{ form_widget(ressourceFormulaire.siteweb) }}</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+    {{ form_end(ressourceFormulaire) }}
 
-{{ form_row(ressourceFormulaire.siteweb) }}
-
-{{ form_end(ressourceFormulaire) }}
+{% endblock %}
