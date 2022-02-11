@@ -195,5 +195,33 @@ class ProstagesController extends AbstractController
             ['ressourceFormulaire'=>$formulaireEntreprise->createView()]
         );
     }
+
+    // ========================================================================= //
+    // ============================== modifierEntreprise ======================== //
+    // ========================================================================= //
+
+    public function modifierEntreprise(Request $request, EntityManagerInterface $manager, Entreprise $entreprise){
+
+        $formulaireEntreprise = $this->createFormBuilder($entreprise)
+                            ->add('nom')
+                            ->add('activite')
+                            ->add('adresse')
+                            ->add('siteweb')
+                            ->getForm();
+
+        $formulaireEntreprise->handleRequest($request);
+
+        if($formulaireEntreprise->isSubmitted()){
+
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            return $this->redirectToRoute('prostages_accueil');
+        }
+
+        return $this->render('prostages/modifierEntreprise.html.twig',
+            ['ressourceFormulaire'=>$formulaireEntreprise->createView()]
+        );
+    }
     
 }

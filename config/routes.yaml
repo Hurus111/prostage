@@ -37,3 +37,7 @@ tps_s4_parFormation:
 prostages_ajouterEntreprise:
     path: /ajouter/entreprise
     controller: App\Controller\ProstagesController::ajouterEntreprise  
+
+prostages_mofidierEntreprise:
+    path: /modifier/entreprise/{id}
+    controller: App\Controller\ProstagesController::mofidierEntreprise  
