@@ -48,7 +48,6 @@ class AppFixtures extends Fixture
                 $randEnt = $listeEntreprises[$faker->numberBetween($min = 0, $max = 5)];
                 $entreprise = new Entreprise();
 
-                $entreprise->setCode($i);
                 $entreprise->setNom($randEnt);
                 $entreprise->setAdresse($faker->address);
                 $entreprise->setActivite($faker->realText($maxNbChars = 50, $indexSize = 2));

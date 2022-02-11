@@ -20,11 +20,6 @@ class Entreprise
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $code;
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     private $nom;
@@ -57,18 +52,6 @@ class Entreprise
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCode(): ?int
-    {
-        return $this->code;
-    }
-
-    public function setCode(int $code): self
-    {
-        $this->code = $code;
-
-        return $this;
     }
 
     public function getNom(): ?string

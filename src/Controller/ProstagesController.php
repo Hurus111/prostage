@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Stage;
 use App\Entity\Formation;
 use App\Entity\Entreprise;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
+
 
 class ProstagesController extends AbstractController
 {
@@ -140,7 +143,9 @@ class ProstagesController extends AbstractController
 
 
 
-    // =====================================================
+    // ========================================================================= //
+    // ============================== tps_s4 =================================== //
+    // ========================================================================= //
 
     public function parEntreprise($id){
         $repository = $this->getDoctrine()->getRepository(Stage::class);
@@ -162,21 +167,32 @@ class ProstagesController extends AbstractController
         );
     }
 
-    // =========== ajouterEntreprise ===========
+    // ========================================================================= //
+    // ============================== ajouterEntreprise ======================== //
+    // ========================================================================= //
 
-    public function ajouterEntreprise(){
+    public function ajouterEntreprise(Request $request, EntityManagerInterface $manager){
         $entreprise = new Entreprise();
 
-        $ressourceFormulaire = $this->createFormBuilder($entreprise)
+        $formulaireEntreprise = $this->createFormBuilder($entreprise)
                             ->add('nom')
                             ->add('activite')
                             ->add('adresse')
                             ->add('siteweb')
-                            ->getForm()
-                            ->createView();
+                            ->getForm();
+
+        $formulaireEntreprise->handleRequest($request);
+
+        if($formulaireEntreprise->isSubmitted()){
+
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            return $this->redirectToRoute('prostages_accueil');
+        }
 
         return $this->render('prostages/ajouterEntreprise.html.twig',
-            ['ressourceFormulaire'=>$ressourceFormulaire]
+            ['ressourceFormulaire'=>$formulaireEntreprise->createView()]
         );
     }
     
