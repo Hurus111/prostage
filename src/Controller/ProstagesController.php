@@ -192,8 +192,9 @@ class ProstagesController extends AbstractController
         }
 
         return $this->render('prostages/ajouterModifierEntreprise.html.twig',
-            ['ressourceFormulaire'=>$formulaireEntreprise->createView()]
-        );
+            ['ressourceFormulaire'=>$formulaireEntreprise->createView(),
+            'action'=>"ajouter"
+        ]);
     }
 
     // ========================================================================= //
@@ -220,8 +221,9 @@ class ProstagesController extends AbstractController
         }
 
         return $this->render('prostages/ajouterModifierEntreprise.html.twig',
-            ['ressourceFormulaire'=>$formulaireEntreprise->createView()]
-        );
+            ['ressourceFormulaire'=>$formulaireEntreprise->createView(),
+            'action'=>"modifier"
+        ]);
     }
     
 }
