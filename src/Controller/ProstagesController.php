@@ -191,7 +191,7 @@ class ProstagesController extends AbstractController
             return $this->redirectToRoute('prostages_accueil');
         }
 
-        return $this->render('prostages/ajouterEntreprise.html.twig',
+        return $this->render('prostages/ajouterModifierEntreprise.html.twig',
             ['ressourceFormulaire'=>$formulaireEntreprise->createView()]
         );
     }
@@ -219,7 +219,7 @@ class ProstagesController extends AbstractController
             return $this->redirectToRoute('prostages_accueil');
         }
 
-        return $this->render('prostages/modifierEntreprise.html.twig',
+        return $this->render('prostages/ajouterModifierEntreprise.html.twig',
             ['ressourceFormulaire'=>$formulaireEntreprise->createView()]
         );
     }

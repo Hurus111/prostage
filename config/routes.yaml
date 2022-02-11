@@ -38,6 +38,6 @@ prostages_ajouterEntreprise:
     path: /ajouter/entreprise
     controller: App\Controller\ProstagesController::ajouterEntreprise  
 
-prostages_mofidierEntreprise:
+prostages_modifierEntreprise:
     path: /modifier/entreprise/{id}
-    controller: App\Controller\ProstagesController::mofidierEntreprise  
+    controller: App\Controller\ProstagesController::modifierEntreprise  
