@@ -26,6 +26,7 @@ Modifier une Entreprise
             <div class="text-black mb-3">{{ form_label(ressourceFormulaire.siteweb) }} : {{ form_widget(ressourceFormulaire.siteweb) }}</div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+    {{ form_rest(ressourceFormulaire) }}
     </form>
     </div>
     {{ form_end(ressourceFormulaire) }}

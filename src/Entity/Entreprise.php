@@ -23,7 +23,7 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\Length(min=4, minMessage="Minimum {{ limit }} caractères")
+     * @Assert\Length(min=4, minMessage="Minimum {{ limit }} caractères",allowEmptyString=false)
      */
     private $nom;
 
