@@ -22,19 +22,19 @@
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{path('prostages_accueil')}}">Accueil</a>
+                                <a class="nav-link  {% block nav_item_accueil %}{% endblock %}" href="{{path('prostages_accueil')}}">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{path('prostages_entreprises')}}">Entreprises</a>
+                                <a class="nav-link {% block nav_item_entreprises %}{% endblock %}" href="{{path('prostages_entreprises')}}">Entreprises</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{path('prostages_formations')}}">Formations</a>
+                                <a class="nav-link {% block nav_item_formations %}{% endblock %}" href="{{path('prostages_formations')}}">Formations</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{path('prostages_stagesListe')}}">Stages</a>
+                                <a class="nav-link {% block nav_item_stages %}{% endblock %}" href="{{path('prostages_stagesListe')}}">Stages</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{path('prostages_ajouterEntreprise')}}">Ajouter Entreprise</a>
+                                <a class="nav-link {% block nav_item_ajouter_entreprise %}{% endblock %}" href="{{path('prostages_ajouterEntreprise')}}">Ajouter Entreprise</a>
                             </li>
                         </ul>
                 
