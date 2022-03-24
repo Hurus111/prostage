@@ -9,6 +9,7 @@ use App\Entity\Stage;
 use App\Entity\Formation;
 use App\Entity\Entreprise;
 use App\Form\EntrepriseType;
+use App\Form\StageType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -199,7 +200,7 @@ class ProstagesController extends AbstractController
 
     public function modifierEntreprise(Request $request, EntityManagerInterface $manager, Entreprise $entreprise){
 
-        $formulaireEntreprise = $this->createFormBuilder(EntrepriseType::class, $entreprise);
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
         $formulaireEntreprise->handleRequest($request);
 
@@ -213,6 +214,55 @@ class ProstagesController extends AbstractController
 
         return $this->render('prostages/ajouterModifierEntreprise.html.twig',
             ['formulaireEntreprise'=>$formulaireEntreprise->createView(),
+            'action'=>"modifier"
+        ]);
+    }
+
+    // ========================================================================= //
+    // ============================== ajouterStage ======================== //
+    // ========================================================================= //
+
+    public function ajouterStage(Request $request, EntityManagerInterface $manager){
+        $stage = new Stage();
+
+        $formulaireStage = $this->createForm(StageType::class, $stage);
+
+        $formulaireStage->handleRequest($request);
+
+        if($formulaireStage->isSubmitted() && $formulaireStage->isValid()){
+
+            $manager->persist($stage);
+            $manager->flush();
+
+            return $this->redirectToRoute('prostages_accueil');
+        }
+
+        return $this->render('prostages/ajouterModifierStage.html.twig',
+            ['formulaireStage'=>$formulaireStage->createView(),
+            'action'=>"ajouter"
+        ]);
+    }
+
+    // ========================================================================= //
+    // ============================== modifierStage ======================== //
+    // ========================================================================= //
+
+    public function modifierStage(Request $request, EntityManagerInterface $manager, Stage $stage){
+
+        $formulaireStage = $this->createForm(StageType::class, $stage);
+
+        $formulaireStage->handleRequest($request);
+
+        if($formulaireStage->isSubmitted() && $formulaireStage->isValid()){
+
+            $manager->persist($stage);
+            $manager->flush();
+
+            return $this->redirectToRoute('prostages_accueil');
+        }
+
+        return $this->render('prostages/ajouterModifierStage.html.twig',
+            ['formulaireStage'=>$formulaireStage->createView(),
             'action'=>"modifier"
         ]);
     }

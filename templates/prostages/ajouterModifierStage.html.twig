@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block nav_item_ajouter_stage %}active{% endblock %}
+{% block title %}
+{% if action == "ajouter" %}
+Ajouter une Entreprise
+{% else %}
+Modifier une Entreprise
+{% endif %}
+{% endblock %}
+
+{% block body %}
+
+    {{ form_start(formulaireStage) }}
+    <div class="col-md text-center">
+    <form>
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+    {{ form_rest(formulaireStage) }}
+    </form>
+    </div>
+    {{ form_end(formulaireStage) }}
+
+{% endblock %}
