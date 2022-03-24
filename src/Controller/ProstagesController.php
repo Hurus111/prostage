@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Stage;
 use App\Entity\Formation;
 use App\Entity\Entreprise;
+use App\Form\EntrepriseType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -174,12 +175,7 @@ class ProstagesController extends AbstractController
     public function ajouterEntreprise(Request $request, EntityManagerInterface $manager){
         $entreprise = new Entreprise();
 
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-                            ->add('nom')
-                            ->add('activite')
-                            ->add('adresse')
-                            ->add('siteweb')
-                            ->getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
         $formulaireEntreprise->handleRequest($request);
 
@@ -192,7 +188,7 @@ class ProstagesController extends AbstractController
         }
 
         return $this->render('prostages/ajouterModifierEntreprise.html.twig',
-            ['ressourceFormulaire'=>$formulaireEntreprise->createView(),
+            ['formulaireEntreprise'=>$formulaireEntreprise->createView(),
             'action'=>"ajouter"
         ]);
     }
@@ -203,12 +199,7 @@ class ProstagesController extends AbstractController
 
     public function modifierEntreprise(Request $request, EntityManagerInterface $manager, Entreprise $entreprise){
 
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-                            ->add('nom')
-                            ->add('activite')
-                            ->add('adresse')
-                            ->add('siteweb')
-                            ->getForm();
+        $formulaireEntreprise = $this->createFormBuilder(EntrepriseType::class, $entreprise);
 
         $formulaireEntreprise->handleRequest($request);
 
@@ -221,7 +212,7 @@ class ProstagesController extends AbstractController
         }
 
         return $this->render('prostages/ajouterModifierEntreprise.html.twig',
-            ['ressourceFormulaire'=>$formulaireEntreprise->createView(),
+            ['formulaireEntreprise'=>$formulaireEntreprise->createView(),
             'action'=>"modifier"
         ]);
     }
