@@ -35,15 +35,15 @@ tps_s4_parFormation:
     controller: App\Controller\ProstagesController::parFormation    
 
 prostages_ajouterEntreprise:
-    path: /ajouter/entreprise
+    path: /admin/ajouter/entreprise
     controller: App\Controller\ProstagesController::ajouterEntreprise  
 
 prostages_modifierEntreprise:
-    path: /modifier/entreprise/{id}
+    path: /admin/modifier/entreprise/{id}
     controller: App\Controller\ProstagesController::modifierEntreprise  
 
 prostages_ajouterStage:
-    path: /ajouter/stage
+    path: /profile/ajouter/stage
     controller: App\Controller\ProstagesController::ajouterStage  
 
 prostages_modifierStage:
