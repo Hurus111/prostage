@@ -17,7 +17,12 @@ security:
             #http_basic: true
             guard:
                 authenticators:
-                    - App\Security\
+                    - App\Security\FormLoginAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+            
 
             
     access_control:
