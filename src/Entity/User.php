@@ -90,6 +90,10 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
+        if ($this->password == null) {
+            $this->password = '';
+        }
+
         return $this->password;
     }
 

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block nav_item_inscription %}active{% endblock %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block body %}
+
+    {{ form_start(formulaireUser) }}
+    <div class="col-md text-center">
+    <form>
+        {{ form_rest(formulaireUser) }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+    {{ form_end(formulaireUser) }}
+
+{% endblock %}

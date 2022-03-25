@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\User;
+use App\Form\UserType;
 
 class SecurityController extends AbstractController
 {
@@ -32,5 +36,28 @@ class SecurityController extends AbstractController
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    /**
+     * @Route("/inscription", name="app_inscription")
+     */
+    public function inscription(Request $request, EntityManagerInterface $manager){
+        $user = new User();
+
+        $formulaireUser = $this->createForm(UserType::class, $user);
+
+        $formulaireUser->handleRequest($request);
+
+        if($formulaireUser->isSubmitted()){
+
+            $manager->persist($user);
+            $manager->flush();
+
+            return $this->redirectToRoute('prostages_accueil');
+        }
+
+        return $this->render('security/inscription.html.twig',
+            ['formulaireUser'=>$formulaireUser->createView(),
+        ]);
     }
 }
